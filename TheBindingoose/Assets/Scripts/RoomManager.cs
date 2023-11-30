@@ -7,13 +7,15 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private int maxRooms = 15;
     [SerializeField] private int minRooms = 7;
 
-    int roomWidth = 11;
-    int roomHeight = 7;
+    int roomWidth = 12;
+    int roomHeight = 10;
 
     int gridSizeX = 10;
     int gridSizeY = 10;
 
     private List<GameObject> roomObjects = new List<GameObject>();
+
+    private Queue<Vector2Int> roomQueue;
 
     private int[,] roomGrid;
 
@@ -22,6 +24,23 @@ public class RoomManager : MonoBehaviour
     private void Start()
     {
         roomGrid = new int[gridSizeX, gridSizeY];
+        roomQueue = new Queue<Vector2Int>();
+
+        Vector2Int initialRoomIndex = new Vector2Int(gridSizeX / 2,gridSizeY / 2 );
+        StartRoomGeneration(initialRoomIndex);
+    }
+
+    private void StartRoomGeneration(Vector2Int roomIndex)
+    {
+        roomQueue.Enqueue(roomIndex);
+        int x = roomIndex.x;
+        int y = roomIndex.y;
+        roomGrid[x, y] = 1;
+        roomCount++;
+        var initialRoom = Instantiate(roomPrefab, GetPositionFromGridIndex(roomIndex), Quaternion.identity);
+        initialRoom.name = $"Room-{roomCount}";
+        initialRoom.GetComponent<Room>().RoomIndex = roomIndex;
+        roomObjects.Add(initialRoom);
     }
 
     private Vector3 GetPositionFromGridIndex(Vector2Int gridIndex)
