@@ -934,9 +934,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2713519482850286248}
-  - {fileID: 1994152048264116126}
-  - {fileID: 7116791044727492878}
   - {fileID: 7449447908088087957}
+  - {fileID: 7116791044727492878}
+  - {fileID: 1994152048264116126}
   m_Father: {fileID: 7005985274718551665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2518171675093837581
@@ -987,7 +987,7 @@ GameObject:
   - component: {fileID: 1581822437069098662}
   - component: {fileID: 6297218691454171914}
   m_Layer: 0
-  m_Name: LeftWall
+  m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1394,6 +1394,10 @@ MonoBehaviour:
   rightDoor: {fileID: 7365080471025851826}
   bottomDoor: {fileID: 5203918654601421003}
   leftDoor: {fileID: 7237853894449849406}
+  topWall: {fileID: 6351419785311226151}
+  rightWall: {fileID: 4164825507075818255}
+  bottomWall: {fileID: 1615802342485747778}
+  leftWall: {fileID: 8355845847017380658}
 --- !u!1 &5203918654601421003
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,7 +3019,7 @@ GameObject:
   - component: {fileID: 2416808024289305407}
   - component: {fileID: 6335393976715489270}
   m_Layer: 0
-  m_Name: RightWall
+  m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
