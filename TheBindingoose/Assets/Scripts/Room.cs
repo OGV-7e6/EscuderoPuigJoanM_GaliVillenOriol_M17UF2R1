@@ -12,6 +12,11 @@ public class Room : MonoBehaviour
     [SerializeField] GameObject bottomWall;
     [SerializeField] GameObject leftWall;
 
+    public Room (int roomType) 
+    {
+        
+    }
+
     public Vector2Int RoomIndex { get; set; }
 
     public void OpenDoor(Vector2Int direction)
