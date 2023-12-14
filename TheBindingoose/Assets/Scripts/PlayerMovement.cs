@@ -44,4 +44,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _movementInput = input.Get<Vector2>();
     }
+    private void OnLook(InputValue input)
+    {
+        
+    }
 }
