@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour
 {
+
+    //whalls and doors
     [SerializeField] GameObject topDoor;
     [SerializeField] GameObject rightDoor;
     [SerializeField] GameObject bottomDoor;
@@ -12,10 +15,8 @@ public class Room : MonoBehaviour
     [SerializeField] GameObject bottomWall;
     [SerializeField] GameObject leftWall;
 
-    public Room (int roomType) 
-    {
-        
-    }
+    //floor layout
+    [SerializeField] List<GameObject> roomLayouts;
 
     public Vector2Int RoomIndex { get; set; }
 
@@ -43,6 +44,30 @@ public class Room : MonoBehaviour
         {
             leftDoor.SetActive(true);
             leftWall.SetActive(false);
+        }
+    }
+
+    private void Start()
+    {
+        float roomtype = Random.value;
+
+        switch (roomtype)
+        {
+            case <= 0.1f:
+                roomLayouts[0].SetActive(true);
+                break;
+
+            case <= 0.2f:
+                roomLayouts[1].SetActive(true);
+                break;
+
+            case <= 0.3f:
+                roomLayouts[2].SetActive(true);
+                break;
+
+            default:
+                roomLayouts[0].SetActive(true);
+                break;
         }
     }
 }
