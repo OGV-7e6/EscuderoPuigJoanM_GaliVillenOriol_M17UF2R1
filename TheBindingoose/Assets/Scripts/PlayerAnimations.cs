@@ -26,7 +26,6 @@ public class PlayerAnimations : MonoBehaviour
         else
         {
             animator.SetFloat("Velocidad", 0);
-
         }
     }
 }
