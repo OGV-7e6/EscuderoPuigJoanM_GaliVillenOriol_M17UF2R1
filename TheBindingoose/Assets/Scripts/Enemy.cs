@@ -18,7 +18,10 @@ public class Enemy : MonoBehaviour
     {
         Handles.color = Color.white;
         Handles.DrawWireDisc(transform.position, transform.forward, _attackRange);
+    }
 
-
+    protected bool CheckIfTargetIsOnRange()
+    {
+        return Vector2.Distance(transform.position, target.position) <= _attackRange;
     }
 }
