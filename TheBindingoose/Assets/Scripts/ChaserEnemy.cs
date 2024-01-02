@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretEnemy : Enemy
+public class ChaserEnemy : Enemy
 {
-    private void Update()
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         if (CheckIfTargetIsOnRange())
         {
@@ -15,10 +22,5 @@ public class TurretEnemy : Enemy
         {
             anim.SetBool("IsAttacking", false);
         }
-    }
-
-    private void ShootFireBall()
-    {
-        Debug.Log("FIRE BALL!!");
     }
 }
