@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChaserEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1862644358873372997, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862644358873372997, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4116049408248007363, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.16012824

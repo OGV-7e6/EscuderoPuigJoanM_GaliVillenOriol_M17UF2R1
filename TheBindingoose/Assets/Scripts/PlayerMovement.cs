@@ -78,6 +78,7 @@ public class PlayerMovement : Character
     void OnTriggerEnter2D(Collider2D other)
     {
         vida = vida - 25;
+        Debug.Log(vida);
         if (other.CompareTag("Enemy") && !isHit)
         {
             if (vida <= 0)
