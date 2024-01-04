@@ -3,16 +3,13 @@ using UnityEngine.InputSystem;
 using System.Collections;
 
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Character
 {
-    private Rigidbody2D _rb;
     private Vector2 _movementInput;
     [SerializeField] private float _speed;
     private PlayerInput _playerInput;
     private Transform objetoVacio;
-    private Animator animator;
     private SpriteRenderer playerRenderer;
-    private Color originalColor;
     private bool isHit;
 
     void Awake()
@@ -35,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         playerRenderer = GetComponent<SpriteRenderer>();
         originalColor = playerRenderer.color;
+        vida = 100;
     }
 
     public void Move(InputAction.CallbackContext ctx)
@@ -79,13 +77,20 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        vida = vida - 25;
         if (other.CompareTag("Enemy") && !isHit)
         {
-            // Cambia el color a rojo
-            playerRenderer.color = Color.red;
-            isHit = true;
-
-            StartCoroutine(ResetColorAfterDelay(0.5f));
+            if (vida <= 0)
+            {
+                animator.SetBool("Death", true);
+            }
+            else
+            {
+                // Cambia el color a rojo
+                playerRenderer.color = Color.red;
+                isHit = true;
+                StartCoroutine(ResetColorAfterDelay(0.5f));
+            }
         }
     }
 
