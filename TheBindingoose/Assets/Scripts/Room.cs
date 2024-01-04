@@ -53,15 +53,15 @@ public class Room : MonoBehaviour
 
         switch (roomtype)
         {
-            case <= 0.1f:
+            case <= .33f:
                 roomLayouts[0].SetActive(true);
                 break;
 
-            case <= 0.2f:
+            case <= .66f:
                 roomLayouts[1].SetActive(true);
                 break;
 
-            case <= 0.3f:
+            case <= .99f:
                 roomLayouts[2].SetActive(true);
                 break;
 
