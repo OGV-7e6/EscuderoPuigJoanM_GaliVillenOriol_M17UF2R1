@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput _playerInput;
     private Transform objetoVacio;
     private Animator animator;
+    private SpriteRenderer playerRenderer;
+    private Color originalColor;
+    private bool isHit;
 
     void Awake()
     {
@@ -28,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        playerRenderer = GetComponent<SpriteRenderer>();
+        originalColor = playerRenderer.color;
     }
 
     public void Move(InputAction.CallbackContext ctx)
@@ -70,7 +77,27 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy") && !isHit)
+        {
+            // Cambia el color a rojo
+            playerRenderer.color = Color.red;
+            isHit = true;
 
+            StartCoroutine(ResetColorAfterDelay(0.5f));
+        }
+    }
+
+    IEnumerator ResetColorAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Restaura el color original
+        playerRenderer.color = originalColor;
+
+        isHit = false;
+    }
 
     private void FixedUpdate()
     {
