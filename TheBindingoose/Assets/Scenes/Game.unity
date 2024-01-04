@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4778282118364470824, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7050978892692688418, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
       propertyPath: speed
       value: 4.5
@@ -357,6 +361,14 @@ PrefabInstance:
     - target: {fileID: 104630740047581873, guid: 75c66ca931ca2cd4593c04d982edea1a, type: 3}
       propertyPath: m_Name
       value: TurretEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 104630740047581873, guid: 75c66ca931ca2cd4593c04d982edea1a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5937848698112460191, guid: 75c66ca931ca2cd4593c04d982edea1a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6070627167576457080, guid: 75c66ca931ca2cd4593c04d982edea1a, type: 3}
       propertyPath: m_LocalPosition.x
