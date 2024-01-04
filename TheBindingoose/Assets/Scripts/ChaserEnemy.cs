@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class ChaserEnemy : Enemy
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] float speed;
 
     // Update is called once per frame
     void Update()
     {
         if (CheckIfTargetIsOnRange())
         {
-            anim.SetBool("IsAttacking", true);
+            anim.SetBool("IsMoving", true);
             RotateTowardsTarget();
+            MoveTowardsTarget();
         }
         else
         {
-            anim.SetBool("IsAttacking", false);
+            anim.SetBool("IsMoving", false);
         }
+    }
+
+    private void MoveTowardsTarget()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 }

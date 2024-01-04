@@ -312,7 +312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971a0397190a0494cb9dc7f67eb63514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRange: 0
+  _attackRange: 2
+  speed: 2
 --- !u!95 &2056275589
 Animator:
   serializedVersion: 5
@@ -323,7 +324,7 @@ Animator:
   m_GameObject: {fileID: 2056275587}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f8e56c2449e5b484c8de3b78a52d43ea, type: 2}
+  m_Controller: {fileID: 9100000, guid: dc016451de8be8c4d9a533a4949f8e96, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -395,7 +396,7 @@ Transform:
   m_GameObject: {fileID: 2056275587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0.03, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
