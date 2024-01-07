@@ -2,15 +2,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 
-
 public class PlayerMovement : Character
 {
     private Vector2 _movementInput;
     [SerializeField] private float _speed;
     private PlayerInput _playerInput;
     private Transform objetoVacio;
-    private SpriteRenderer playerRenderer;
+    public SpriteRenderer playerRenderer;
     private bool isHit;
+
+    public Sprite[] spritesArmas; // Coloca aquí tus sprites de las 4 armas en el orden mencionado
+
+    private int armaActual = 0;
 
     void Awake()
     {
@@ -25,15 +28,15 @@ public class PlayerMovement : Character
         _playerInput.actions["Move"].canceled += ctx => Move(ctx);
         _playerInput.actions["Look"].performed += ctx => Look(ctx);
         _playerInput.actions["Look"].canceled += ctx => Look(ctx);
+        _playerInput.actions["SwitchWun"].performed += ctx => CambiarArma(ctx);
     }
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        playerRenderer = GetComponent<SpriteRenderer>();
         originalColor = playerRenderer.color;
-        vida = 100;
     }
+
 
     public void Move(InputAction.CallbackContext ctx)
     {
@@ -74,6 +77,35 @@ public class PlayerMovement : Character
             }
         }
     }
+
+    public void CambiarArma(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("Cambiando arma");
+
+        float cambio = ctx.ReadValue<float>();
+
+        if (cambio > 0)
+        {
+            // Cambio a la siguiente arma
+            armaActual = (armaActual + 1) % spritesArmas.Length;
+        }
+        else
+        {
+            // Cambio a la arma anterior
+            armaActual = (armaActual - 1 + spritesArmas.Length) % spritesArmas.Length;
+        }
+
+        ActualizarSpriteArma();
+    }
+
+    private void ActualizarSpriteArma()
+    {
+        Debug.Log("act arma");
+
+        // Actualiza el sprite del secuaz con el sprite de la arma actual
+        playerRenderer.sprite = spritesArmas[armaActual];
+    }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
