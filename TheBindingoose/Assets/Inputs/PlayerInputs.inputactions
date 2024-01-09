@@ -275,37 +275,26 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "QE",
-                    "id": "440c4804-17c3-482a-bb83-6721e41abec5",
-                    "path": "Dpad",
+                    "name": "",
+                    "id": "a0a77475-f951-4011-9337-074ea389acc2",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "SwitchWun",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "4f5ba211-f4a8-48a8-840d-b413c7790d14",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "SwitchWun",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "dc3eed3d-4199-46a0-bcc9-fab028de12bd",
+                    "name": "",
+                    "id": "3d28c94f-8f19-411f-9c13-690c8f64a8dd",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "",
                     "action": "SwitchWun",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         },

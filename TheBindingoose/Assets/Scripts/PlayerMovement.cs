@@ -10,7 +10,8 @@ public class PlayerMovement : Character
     private Transform objetoVacio;
     public SpriteRenderer playerRenderer;
     private bool isHit;
-
+    private GameObject dave;
+    public SpriteRenderer daveSr;
     public Sprite[] spritesArmas; // Coloca aquí tus sprites de las 4 armas en el orden mencionado
 
     private int armaActual = 0;
@@ -20,6 +21,8 @@ public class PlayerMovement : Character
         _rb = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<PlayerInput>();
         objetoVacio = transform.Find("Move it Dave"); //
+        dave = GameObject.Find("Dave");
+       
     }
 
     private void OnEnable()
@@ -95,7 +98,7 @@ public class PlayerMovement : Character
             // Cambio a la arma anterior
             armaActual = (armaActual - 1 + spritesArmas.Length) % spritesArmas.Length;
         }
-
+        Debug.Log(spritesArmas[armaActual]);
         ActualizarSpriteArma();
     }
 
@@ -104,7 +107,8 @@ public class PlayerMovement : Character
         Debug.Log("act arma");
 
         // Actualiza el sprite del secuaz con el sprite de la arma actual
-        playerRenderer.sprite = spritesArmas[armaActual];
+        //playerRenderer.sprite = spritesArmas[armaActual];
+        daveSr.sprite=spritesArmas[armaActual];
     }
 
 

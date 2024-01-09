@@ -136,9 +136,13 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
-      propertyPath: playerRenderer
+      propertyPath: daveSr
       value: 
       objectReference: {fileID: 541473519}
+    - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+      propertyPath: playerRenderer
+      value: 
+      objectReference: {fileID: 2065943713}
     - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: spritesArmas.Array.size
       value: 4
@@ -520,6 +524,11 @@ Transform:
 --- !u!4 &2065943707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6089287555001983460, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+  m_PrefabInstance: {fileID: 45687488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2065943713 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6616133644266663875, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
   m_PrefabInstance: {fileID: 45687488}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
