@@ -140,9 +140,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 541473519}
     - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+      propertyPath: flameAnimation
+      value: 
+      objectReference: {fileID: 7400000, guid: f6456ea6cf16c0843a67ec57d0196ec7, type: 2}
+    - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+      propertyPath: meleeAnimation
+      value: 
+      objectReference: {fileID: 7400000, guid: eb5d80cac4001c44fb08dc489f4346f1, type: 2}
+    - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: playerRenderer
       value: 
       objectReference: {fileID: 2065943713}
+    - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+      propertyPath: snipeAnimation
+      value: 
+      objectReference: {fileID: 7400000, guid: 9ff2271edcf57574a8df0a8b13c56bbd, type: 2}
+    - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+      propertyPath: grenadeAnimation
+      value: 
+      objectReference: {fileID: 7400000, guid: d11d9067a19922a4c97e1d3d895b9415, type: 2}
     - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: spritesArmas.Array.size
       value: 4
@@ -150,19 +166,19 @@ PrefabInstance:
     - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: spritesArmas.Array.data[0]
       value: 
-      objectReference: {fileID: -1805814092, guid: 779badf98fd39414fb82520151f13f42, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: spritesArmas.Array.data[1]
       value: 
-      objectReference: {fileID: -758016955, guid: 24e2dd42554e73849bb7eb7e19c14916, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: spritesArmas.Array.data[2]
       value: 
-      objectReference: {fileID: 1571361722, guid: 3fee6bd827e4857409f0fd5e3e5d6acf, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: spritesArmas.Array.data[3]
       value: 
-      objectReference: {fileID: 355150614, guid: 44bfd83a8bccbb84996fe313cf4ef0b7, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4632235031955683312, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: m_Name
       value: Player

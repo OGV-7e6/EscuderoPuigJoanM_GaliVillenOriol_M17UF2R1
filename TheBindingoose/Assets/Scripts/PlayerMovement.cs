@@ -11,8 +11,8 @@ public class PlayerMovement : Character
     public SpriteRenderer playerRenderer;
     private bool isHit;
     private GameObject dave;
-    public SpriteRenderer daveSr;
-    public Sprite[] spritesArmas; // Coloca aquí tus sprites de las 4 armas en el orden mencionado
+    private Animator animatordave;
+    private int animacion;
 
     private int armaActual = 0;
 
@@ -22,7 +22,7 @@ public class PlayerMovement : Character
         _playerInput = GetComponent<PlayerInput>();
         objetoVacio = transform.Find("Move it Dave"); //
         dave = GameObject.Find("Dave");
-       
+        animatordave = dave.GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -39,6 +39,8 @@ public class PlayerMovement : Character
         animator = GetComponent<Animator>();
         originalColor = playerRenderer.color;
         vida = 100;
+        animacion = 0;
+
     }
 
 
@@ -84,31 +86,31 @@ public class PlayerMovement : Character
 
     public void CambiarArma(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Cambiando arma");
-
-        float cambio = ctx.ReadValue<float>();
-
-        if (cambio > 0)
+        Debug.Log("1");
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
-            // Cambio a la siguiente arma
-            armaActual = (armaActual + 1) % spritesArmas.Length;
+            Debug.Log("Presionaste la tecla E");
+            animacion++;
+            if (animacion>4)
+            {
+                animacion=1;
+            }
+            animatordave.SetInteger("Animacion", animacion);
+
+
         }
-        else
+        // Verifica si se presiona la tecla "Q"
+        else if (Keyboard.current.qKey.wasPressedThisFrame)
         {
-            // Cambio a la arma anterior
-            armaActual = (armaActual - 1 + spritesArmas.Length) % spritesArmas.Length;
+            Debug.Log("Presionaste la tecla Q");
+            animacion--;
+            if(animacion < 1)
+            {
+                animacion = 4;
+            }
+            animatordave.SetInteger("Animacion", animacion);
+
         }
-        Debug.Log(spritesArmas[armaActual]);
-        ActualizarSpriteArma();
-    }
-
-    private void ActualizarSpriteArma()
-    {
-        Debug.Log("act arma");
-
-        // Actualiza el sprite del secuaz con el sprite de la arma actual
-        //playerRenderer.sprite = spritesArmas[armaActual];
-        daveSr.sprite=spritesArmas[armaActual];
     }
 
 
