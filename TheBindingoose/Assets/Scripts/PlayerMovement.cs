@@ -19,7 +19,7 @@ public class PlayerMovement : Character
     {
         _rb = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<PlayerInput>();
-        objetoVacio = transform.Find("Move it Dave"); // Asegúrate de que el objeto vacío está anidado en el jugador
+        objetoVacio = transform.Find("Move it Dave"); //
     }
 
     private void OnEnable()
@@ -35,6 +35,7 @@ public class PlayerMovement : Character
     {
         animator = GetComponent<Animator>();
         originalColor = playerRenderer.color;
+        vida = 100;
     }
 
 
@@ -118,6 +119,7 @@ public class PlayerMovement : Character
             }
             else
             {
+                Debug.Log("daño resibio");
                 // Cambia el color a rojo
                 playerRenderer.color = Color.red;
                 isHit = true;
