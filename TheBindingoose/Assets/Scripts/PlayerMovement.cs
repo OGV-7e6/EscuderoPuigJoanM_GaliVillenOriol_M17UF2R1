@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.VFX;
 
 public class PlayerMovement : Character
 {
@@ -12,9 +13,8 @@ public class PlayerMovement : Character
     private bool isHit;
     private GameObject dave;
     private Animator animatordave;
-    private int animacion;
-
-    private int armaActual = 0;
+    protected int animacion;
+    protected int armaActual = 0;
 
     void Awake()
     {
@@ -42,8 +42,7 @@ public class PlayerMovement : Character
         animacion = 0;
 
     }
-
-
+  
     public void Move(InputAction.CallbackContext ctx)
     {
         float hor = ctx.ReadValue<Vector2>().x;
@@ -91,6 +90,7 @@ public class PlayerMovement : Character
         {
             Debug.Log("Presionaste la tecla E");
             animacion++;
+            armaActual = animacion;
             if (animacion>4)
             {
                 animacion=1;
@@ -104,7 +104,9 @@ public class PlayerMovement : Character
         {
             Debug.Log("Presionaste la tecla Q");
             animacion--;
-            if(animacion < 1)
+            armaActual = animacion;
+
+            if (animacion < 1)
             {
                 animacion = 4;
             }
@@ -112,7 +114,6 @@ public class PlayerMovement : Character
 
         }
     }
-
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -148,6 +149,8 @@ public class PlayerMovement : Character
     {
         _rb.velocity = _movementInput * _speed;
     }
+
+   
 }
 
 
