@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2421025285591900425}
   - component: {fileID: 7050978892692688418}
   - component: {fileID: 4057156237760747313}
+  - component: {fileID: 2415976857284228305}
   m_Layer: 0
   m_Name: ChaserEnemy
   m_TagString: Enemy
@@ -120,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971a0397190a0494cb9dc7f67eb63514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRange: 3.5
-  speed: 4.5
+  _attackRange: 0
+  speed: 0
 --- !u!70 &4057156237760747313
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -157,3 +158,38 @@ CapsuleCollider2D:
   m_Offset: {x: -0.03835705, y: -0.34945202}
   m_Size: {x: 0.5567629, y: 0.67609596}
   m_Direction: 0
+--- !u!58 &2415976857284228305
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862644358873372997}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03682518, y: -0.37029764}
+  serializedVersion: 2
+  m_Radius: 0.26810214

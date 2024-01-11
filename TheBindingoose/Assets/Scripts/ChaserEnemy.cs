@@ -25,4 +25,17 @@ public class ChaserEnemy : Enemy
     {
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            anim.SetBool("Explodes", true);
+        }
+    }
 }

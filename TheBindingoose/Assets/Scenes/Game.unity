@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 32010866668507058, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1862644358873372997, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
       propertyPath: m_Name
       value: ChaserEnemy
@@ -142,6 +146,14 @@ PrefabInstance:
     - target: {fileID: 1862644358873372997, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175991718376028833, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057156237760747313, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4116049408248007363, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -192,10 +204,16 @@ PrefabInstance:
       value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 7050978892692688418, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
+      propertyPath: attackRange
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050978892692688418, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
       propertyPath: _attackRange
       value: 3.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 785666670424570911, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
+    - {fileID: 3175991718376028833, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -376,6 +394,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5937848698112460191, guid: 75c66ca931ca2cd4593c04d982edea1a, type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989001268308242148, guid: 75c66ca931ca2cd4593c04d982edea1a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989001268308242148, guid: 75c66ca931ca2cd4593c04d982edea1a, type: 3}
+      propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6070627167576457080, guid: 75c66ca931ca2cd4593c04d982edea1a, type: 3}
