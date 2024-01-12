@@ -43,7 +43,6 @@ public class PlayerWeapon : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            
             GameObject bullet = Instantiate(bulletPrefab);
             bullet.transform.position = spawner.position;
             bullet.transform.rotation = spawner.rotation;
