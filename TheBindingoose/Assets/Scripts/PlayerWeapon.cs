@@ -13,6 +13,9 @@ public class PlayerWeapon : MonoBehaviour
     protected int armaActual;
     public KeyCode[] teclasFlecha; // Puedes asignar las teclas que desees en el Inspector
     private float spd = 18; // Agrega esta línea para definir spd
+    [SerializeField] private Animator animator; // Referencia al componente Animator del personaje
+    [SerializeField] private BoxCollider2D cuchilloCollider;
+    private bool ataque = false;  // Nueva variable para controlar el ataque
 
 
 
@@ -20,7 +23,18 @@ public class PlayerWeapon : MonoBehaviour
     {
         bulletRenderer = GetComponent<SpriteRenderer>();
         armaActual = 0;
+        cuchilloCollider = GetComponent<BoxCollider2D>();
 
+        if (cuchilloCollider == null)
+        {
+            // Puedes imprimir un mensaje de error o realizar alguna acción apropiada
+            Debug.LogError("No se encontró el componente Collider en " + gameObject.name);
+        }
+        else
+        {
+            // Asegúrate de desactivar el collider al inicio
+            cuchilloCollider.enabled = false;
+        }
     }
     private void Update()
     {
@@ -55,6 +69,26 @@ public class PlayerWeapon : MonoBehaviour
 
         switch (armaActual)
         {
+            case 1:
+                // Verifica si alguna de las teclas de flecha está siendo presionada
+                foreach (KeyCode tecla in teclasFlecha)
+                {
+                    if (Input.GetKey(tecla))
+                    {
+                        arrowKeysPressed = true;
+                        break;
+                    }
+                }
+
+                if (arrowKeysPressed)
+                {
+                    if (AtaqueCuchillo())
+                    {
+                        animator.SetBool("Ataque", true);
+                        StartCoroutine(EsperarFinAtaqueCuchillo());
+                    }
+                }
+                break;
             case 3:
                 // Verifica si alguna de las teclas de flecha está siendo presionada
                 foreach (KeyCode tecla in teclasFlecha)
@@ -114,45 +148,53 @@ public class PlayerWeapon : MonoBehaviour
     }
     public bool DispararLanzallamas()
     {
+     
         if (Time.time - lastShootDate > shootCooldown)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                GameObject bullet = Instantiate(bulletPrefab);
-                bullet.transform.position = spawner.position;
-
-                float spreadAngle = Random.Range(-45f, 45f);
-
-                // Guardar la rotación original del spawner
-                Quaternion originalRotation = spawner.rotation;
-
-                // Aplicar la rotación esparcida al spawner
-                spawner.rotation *= Quaternion.Euler(0f, spreadAngle, 0f);
-
-                Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-
-                // Separar la operación de suma para evitar la ambigüedad
-                Vector2 newPosition = bulletRb.position + (Vector2)bullet.transform.up * spd * Time.fixedDeltaTime;
-                bulletRb.MovePosition(newPosition);
-
-                float angle = Mathf.Atan2(bulletRb.velocity.y, bulletRb.velocity.x) * Mathf.Rad2Deg;
-                bulletRb.MoveRotation(angle);
-
-                // Restablecer la rotación original del spawner
-                spawner.rotation = originalRotation;
-
-                Destroy(bullet, 2f);
-            }
-
+            GameObject bullet = Instantiate(bulletPrefab);
             lastShootDate = Time.time;
+            bullet.transform.position = spawner.position;
+            bullet.transform.rotation = spawner.rotation;
+            Destroy(bullet, 2f);
             return true;
         }
 
         return false;
     }
 
+    public bool AtaqueCuchillo()
+    {
+        if (Time.time - lastShootDate > shootCooldown)
+        {
+            // Activa el collider para el daño durante el ataque de cuchillo
+            cuchilloCollider.enabled = true;
 
+            // Después de un tiempo, desactiva el collider para evitar daño continuo
+            StartCoroutine(DesactivarColliderDespuesDeTiempo(shootCooldown / 6f));
 
+            // Actualiza el tiempo del último ataque de cuchillo
+            lastShootDate = Time.time;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    IEnumerator DesactivarColliderDespuesDeTiempo(float tiempo)
+    {
+        yield return new WaitForSeconds(tiempo);
+        // Desactiva el collider después de un tiempo para evitar daño continuo
+        cuchilloCollider.enabled = false;
+    }
+    IEnumerator EsperarFinAtaqueCuchillo()
+    {
+        // Espera a que termine la animación de ataque de cuchillo
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
+
+        // Reinicia la animación al estado de "idle"
+        animator.SetBool("Ataque", false);
+    }
 }
 
 
