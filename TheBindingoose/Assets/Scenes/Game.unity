@@ -192,8 +192,32 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5201419072383084807, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+      propertyPath: lastShootDate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201419072383084807, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: shootCooldown
-      value: 2
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201419072383084807, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+      propertyPath: teclasFlecha.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201419072383084807, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+      propertyPath: teclasFlecha.Array.data[0]
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201419072383084807, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+      propertyPath: teclasFlecha.Array.data[1]
+      value: 274
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201419072383084807, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+      propertyPath: teclasFlecha.Array.data[2]
+      value: 275
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201419072383084807, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+      propertyPath: teclasFlecha.Array.data[3]
+      value: 276
       objectReference: {fileID: 0}
     - target: {fileID: 5951039541488756535, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: m_LocalPosition.x
