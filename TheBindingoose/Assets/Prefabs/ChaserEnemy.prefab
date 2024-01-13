@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7050978892692688418}
   - component: {fileID: 4057156237760747313}
   - component: {fileID: 2415976857284228305}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ChaserEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03835705, y: -0.34945202}
+  m_Offset: {x: -0.03835705, y: 0.1}
   m_Size: {x: 0.5567629, y: 0.67609596}
   m_Direction: 0
 --- !u!58 &2415976857284228305
@@ -190,6 +190,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03682518, y: -0.37029764}
+  m_Offset: {x: -0.03682518, y: 0.1}
   serializedVersion: 2
   m_Radius: 0.26810214

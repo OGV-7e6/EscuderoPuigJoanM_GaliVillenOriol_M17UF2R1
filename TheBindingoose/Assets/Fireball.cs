@@ -17,4 +17,10 @@ public class Fireball : MonoBehaviour
     {
         _rb.MovePosition(transform.position + transform.up * spd * Time.fixedDeltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(gameObject);
+    }
+
 }
