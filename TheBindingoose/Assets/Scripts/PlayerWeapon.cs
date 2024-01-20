@@ -9,6 +9,7 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float lastShootDate;
     [SerializeField] private float shootCooldown;
+    [SerializeField] private float shootgunCooldown;
     public Transform spawner;
     protected int armaActual;
     public KeyCode[] teclasFlecha; // Puedes asignar las teclas que desees en el Inspector
@@ -16,7 +17,7 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private Animator animator; // Referencia al componente Animator del personaje
     [SerializeField] private BoxCollider2D cuchilloCollider;
     private bool ataque = false;  // Nueva variable para controlar el ataque
-
+    [SerializeField] private Transform[] Shootgun;
 
 
     private void Start()
@@ -109,7 +110,6 @@ public class PlayerWeapon : MonoBehaviour
 
             case 4:
                 Debug.Log("entrando");
-                // Verifica si alguna de las teclas de flecha está siendo presionada
                 arrowKeysPressed = false;  // Reiniciar el valor a falso
                 foreach (KeyCode tecla in teclasFlecha)
                 {
@@ -149,14 +149,19 @@ public class PlayerWeapon : MonoBehaviour
     public bool DispararLanzallamas()
     {
      
-        if (Time.time - lastShootDate > shootCooldown)
+        if (Time.time - lastShootDate > shootgunCooldown)
         {
-            GameObject bullet = Instantiate(bulletPrefab);
-            lastShootDate = Time.time;
-            bullet.transform.position = spawner.position;
-            bullet.transform.rotation = spawner.rotation;
-            Destroy(bullet, 2f);
+            foreach (Transform fire in Shootgun)
+            {
+                GameObject bullet = Instantiate(bulletPrefab);
+                lastShootDate = Time.time;
+                bullet.transform.position = fire.position;
+                bullet.transform.rotation = fire.rotation;
+
+                Destroy(bullet, 3f);
+            }
             return true;
+
         }
 
         return false;
