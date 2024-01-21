@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4299345148151845876}
   - component: {fileID: 6468648232160089028}
   - component: {fileID: 6204465527004171648}
+  - component: {fileID: 5201419072383084807}
   m_Layer: 0
   m_Name: Dave
   m_TagString: Untagged
@@ -30,7 +31,8 @@ Transform:
   m_LocalPosition: {x: -0.027, y: 1.041, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5951039541488756535}
   m_Father: {fileID: 7853470307158584916}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6468648232160089028
@@ -106,6 +108,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5201419072383084807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623946731966869144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c8dc79a35a1d845a0888a3da6db8a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletRenderer: {fileID: 6468648232160089028}
+  bulletPrefab: {fileID: 3317425955650773759, guid: 5852551d9cca6ba4b938949558d964f8, type: 3}
+  spawner: {fileID: 5951039541488756535}
 --- !u!1 &3493993919328018039
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 8
+  playerRenderer: {fileID: 0}
 --- !u!114 &8899603644724394166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,3 +385,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &6523291755769446230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5951039541488756535}
+  m_Layer: 0
+  m_Name: SpawnerBullets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5951039541488756535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6523291755769446230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4299345148151845876}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

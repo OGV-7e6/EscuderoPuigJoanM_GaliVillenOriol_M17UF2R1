@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
-
+using UnityEngine.VFX;
+using UnityEngine.UI;
 
 public class PlayerMovement : Character
 {
@@ -9,14 +10,23 @@ public class PlayerMovement : Character
     [SerializeField] private float _speed;
     private PlayerInput _playerInput;
     private Transform objetoVacio;
-    private SpriteRenderer playerRenderer;
+    public SpriteRenderer playerRenderer;
     private bool isHit;
+    private GameObject dave;
+    private Animator animatordave;
+    protected int animacion;
+    protected int armaActual = 0;
+    [SerializeField] private Image life;
+    [SerializeField] private float vidaMax;
+    
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<PlayerInput>();
-        objetoVacio = transform.Find("Move it Dave"); // Asegúrate de que el objeto vacío está anidado en el jugador
+        objetoVacio = transform.Find("Move it Dave"); //
+        dave = GameObject.Find("Dave");
+        animatordave = dave.GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -25,15 +35,22 @@ public class PlayerMovement : Character
         _playerInput.actions["Move"].canceled += ctx => Move(ctx);
         _playerInput.actions["Look"].performed += ctx => Look(ctx);
         _playerInput.actions["Look"].canceled += ctx => Look(ctx);
+        _playerInput.actions["SwitchWun"].performed += ctx => CambiarArma(ctx);
     }
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        playerRenderer = GetComponent<SpriteRenderer>();
         originalColor = playerRenderer.color;
         vida = 100;
+        animacion = 0;
+
     }
+    void Update()
+    {
+        life.fillAmount = vida / vidaMax;
+    }
+
 
     public void Move(InputAction.CallbackContext ctx)
     {
@@ -51,7 +68,7 @@ public class PlayerMovement : Character
             animator.SetFloat("Velocidad", 0);
         }
 
-        // Actualiza la dirección de movimiento para el movimiento del jugador
+        // Actualiza la direcciï¿½n de movimiento para el movimiento del jugador
         _movementInput = new Vector2(hor, ver);
     }
 
@@ -63,36 +80,73 @@ public class PlayerMovement : Character
 
             if (input != Vector2.zero)
             {
-                // Calcula el ángulo de rotación directamente
+                // Calcula el ï¿½ngulo de rotaciï¿½n directamente
                 float targetAngle = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg;
 
-                // Ajusta el ángulo a 0, 90, 180 o 270 grados
+                // Ajusta el ï¿½ngulo a 0, 90, 180 o 270 grados
                 targetAngle = Mathf.Round(targetAngle / 90) * -90;
 
-                // Aplica la rotación al objeto vacío
+                // Aplica la rotaciï¿½n al objeto vacï¿½o
                 objetoVacio.rotation = Quaternion.Euler(0, 0, targetAngle);
             }
         }
     }
 
+    public void CambiarArma(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("1");
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            Debug.Log("Presionaste la tecla E");
+            animacion++;
+            armaActual = animacion;
+            if (animacion > 3)
+            {
+                animacion = 1;
+            }
+            animatordave.SetInteger("Animacion", animacion);
+
+
+        }
+        // Verifica si se presiona la tecla "Q"
+        else if (Keyboard.current.qKey.wasPressedThisFrame)
+        {
+            Debug.Log("Presionaste la tecla Q");
+            animacion--;
+            armaActual = animacion;
+
+            if (animacion < 1)
+            {
+                animacion = 3;
+            }
+            animatordave.SetInteger("Animacion", animacion);
+
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        vida = vida - 25;
-        Debug.Log(vida);
+
+       
         if (other.CompareTag("Enemy") && !isHit)
         {
+            vida = vida - 25;
+
             if (vida <= 0)
             {
                 animator.SetBool("Death", true);
             }
             else
             {
+                Debug.Log("daï¿½o resibio");
                 // Cambia el color a rojo
                 playerRenderer.color = Color.red;
                 isHit = true;
                 StartCoroutine(ResetColorAfterDelay(0.5f));
             }
         }
+
+
     }
 
     IEnumerator ResetColorAfterDelay(float delay)
@@ -109,6 +163,8 @@ public class PlayerMovement : Character
     {
         _rb.velocity = _movementInput * _speed;
     }
+
+
 }
 
 

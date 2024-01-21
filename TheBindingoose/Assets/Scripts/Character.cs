@@ -7,7 +7,7 @@ public class Character : MonoBehaviour
     protected Rigidbody2D _rb;
     protected Animator animator;
     protected Color originalColor;
-    protected int vida;
+    protected float vida;
 
     // Start is called before the first frame update
     void Start()
