@@ -11,33 +11,26 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private float lastShootDate;
     [SerializeField] private float shootCooldown;
     [SerializeField] private float shootgunCooldown;
+    [SerializeField] private float kniveCooldown;
     public Transform spawner;
     protected int armaActual;
     public KeyCode[] teclasFlecha; // Puedes asignar las teclas que desees en el Inspector
     private float spd = 18; // Agrega esta línea para definir spd
     [SerializeField] private Animator animator; // Referencia al componente Animator del personaje
-    [SerializeField] private BoxCollider2D cuchilloCollider;
     private bool ataque = false;  // Nueva variable para controlar el ataque
     [SerializeField] private Transform[] Shootgun;
-
+    [SerializeField] private float kniveRange;
+    [SerializeField] private LayerMask enemys;
+    private int dmg = 20;
 
     private void Start()
     {
         bulletRenderer = GetComponent<SpriteRenderer>();
         armaActual = 0;
-        cuchilloCollider = GetComponent<BoxCollider2D>();
+       
 
-        if (cuchilloCollider == null)
-        {
-            // Puedes imprimir un mensaje de error o realizar alguna acción apropiada
-            Debug.LogError("No se encontró el componente Collider en " + gameObject.name);
-        }
-        else
-        {
-            // Asegúrate de desactivar el collider al inicio
-            cuchilloCollider.enabled = false;
-        }
     }
+
     private void Update()
     {
 
@@ -84,14 +77,14 @@ public class PlayerWeapon : MonoBehaviour
 
                 if (arrowKeysPressed)
                 {
-                    if (AtaqueCuchillo())
-                    {
-                        animator.SetBool("Ataque", true);
-                        StartCoroutine(EsperarFinAtaqueCuchillo());
-                    }
+                    AtaqueCuchillo();
+
+
+
                 }
                 break;
             case 2:
+
                 // Verifica si alguna de las teclas de flecha está siendo presionada
                 foreach (KeyCode tecla in teclasFlecha)
                 {
@@ -110,7 +103,6 @@ public class PlayerWeapon : MonoBehaviour
                 break;
 
             case 3:
-                Debug.Log("entrando");
                 arrowKeysPressed = false;  // Reiniciar el valor a falso
                 foreach (KeyCode tecla in teclasFlecha)
                 {
@@ -130,9 +122,6 @@ public class PlayerWeapon : MonoBehaviour
         }
     }
 
-
-
-
     public bool Disparar()
     {
         if (Time.time - lastShootDate > shootCooldown)
@@ -141,15 +130,16 @@ public class PlayerWeapon : MonoBehaviour
             lastShootDate = Time.time;
             bullet.transform.position = spawner.position;
             bullet.transform.rotation = spawner.rotation;
-            Destroy(bullet, 2f);
+            Destroy(bullet, 0.9f);
             return true;
         }
 
         return false;
     }
+
     public bool DispararLanzallamas()
     {
-     
+
         if (Time.time - lastShootDate > shootgunCooldown)
         {
             foreach (Transform fire in Shootgun)
@@ -158,8 +148,7 @@ public class PlayerWeapon : MonoBehaviour
                 lastShootDate = Time.time;
                 bullet.transform.position = fire.position;
                 bullet.transform.rotation = fire.rotation;
-
-                Destroy(bullet, 3f);
+                Destroy(bullet, 0.5f);
             }
             return true;
 
@@ -170,15 +159,16 @@ public class PlayerWeapon : MonoBehaviour
 
     public bool AtaqueCuchillo()
     {
-        if (Time.time - lastShootDate > shootCooldown)
+        if (Time.time - lastShootDate > kniveCooldown)
         {
-            // Activa el collider para el daño durante el ataque de cuchillo
-            cuchilloCollider.enabled = true;
-
-            // Después de un tiempo, desactiva el collider para evitar daño continuo
-            StartCoroutine(DesactivarColliderDespuesDeTiempo(shootCooldown / 6f));
-
-            // Actualiza el tiempo del último ataque de cuchillo
+            animator.SetBool("Ataque", true);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, kniveRange, enemys);
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                Debug.Log("me golpiaron " + enemy.name);
+                enemy.GetComponent<pruebavida>().TakeDamage(dmg);
+            }
+            StartCoroutine(EsperarFinAtaqueCuchillo());
             lastShootDate = Time.time;
 
             return true;
@@ -186,13 +176,11 @@ public class PlayerWeapon : MonoBehaviour
 
         return false;
     }
-
-    IEnumerator DesactivarColliderDespuesDeTiempo(float tiempo)
+    void OnDrawGizmosSelected()
     {
-        yield return new WaitForSeconds(tiempo);
-        // Desactiva el collider después de un tiempo para evitar daño continuo
-        cuchilloCollider.enabled = false;
+        Gizmos.DrawWireSphere(transform.position, kniveRange);
     }
+
     IEnumerator EsperarFinAtaqueCuchillo()
     {
         // Espera a que termine la animación de ataque de cuchillo

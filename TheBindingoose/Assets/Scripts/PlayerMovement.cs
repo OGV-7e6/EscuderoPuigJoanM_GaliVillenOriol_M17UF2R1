@@ -128,7 +128,7 @@ public class PlayerMovement : Character
     {
 
        
-        if (other.CompareTag("Enemy") && !isHit)
+        if (other.CompareTag("Enemy") && !gameObject.CompareTag("Dave") && !isHit)
         {
             vida = vida - 25;
 
@@ -138,7 +138,7 @@ public class PlayerMovement : Character
             }
             else
             {
-                Debug.Log("da�o resibio");
+                Debug.Log("daño resibio");
                 // Cambia el color a rojo
                 playerRenderer.color = Color.red;
                 isHit = true;

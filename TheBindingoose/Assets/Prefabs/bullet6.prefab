@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 3317425955650773759}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.17733334, y: -0.13946667, z: 0.58980685}
-  m_LocalScale: {x: 0.99, y: 0.98, z: 0.57}
+  m_LocalPosition: {x: -0.1109, y: -0.08614, z: 0.58980685}
+  m_LocalScale: {x: 1.5232636, y: 1.3121612, z: 0.57}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -171,3 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75870fc02daff34698cbbcf3bf766b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletRange: 1
+  enemys:
+    serializedVersion: 2
+    m_Bits: 128
