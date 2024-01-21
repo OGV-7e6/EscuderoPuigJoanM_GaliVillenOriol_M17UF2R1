@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine.VFX;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : Character
 {
@@ -18,8 +19,8 @@ public class PlayerMovement : Character
     protected int armaActual = 0;
     [SerializeField] private Image life;
     [SerializeField] private float vidaMax;
-    
-
+    public int ammo = 5;
+    [SerializeField] private TMP_Text municion;
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -48,6 +49,7 @@ public class PlayerMovement : Character
     }
     void Update()
     {
+        UpdateAmmoText();
         life.fillAmount = vida / vidaMax;
     }
 
@@ -152,7 +154,14 @@ public class PlayerMovement : Character
             isHit = true;
             StartCoroutine(ResetColorAfterDelay(0.2f));
         }
-
+        if (other.CompareTag("ammo"))
+        {
+            ammo += 15;
+            UpdateAmmoText();
+            playerRenderer.color = Color.yellow;
+            isHit = true;
+            StartCoroutine(ResetColorAfterDelay(0.15f));
+        }
 
     }
 
@@ -171,7 +180,14 @@ public class PlayerMovement : Character
         _rb.velocity = _movementInput * _speed;
     }
 
-
+    public void UpdateAmmoText()
+    {
+        if (municion != null)
+        {
+            // Actualiza el texto con la cantidad actual de munición
+            municion.text = "Munición : " + ammo;
+        }
+    }
 }
 
 

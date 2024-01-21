@@ -7,6 +7,7 @@ public class pruebavida : Character
     private bool isHit;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject salud;
+    [SerializeField] private GameObject ammoPickup; // Nuevo GameObject para el ammo
 
     // Start is called before the first frame update
     void Start()
@@ -42,8 +43,8 @@ public class pruebavida : Character
         vida -= damage;
         if (vida <= 0)
         {
-            GameObject medkit = Instantiate(salud);
-            medkit.transform.position = transform.position;
+
+            SpawnRandomPickup(); // Llama a la función para decidir qué objeto soltar
             Destroy(this.gameObject);
         }
         else
@@ -54,6 +55,21 @@ public class pruebavida : Character
 
             // Aplicar el nuevo color al material del sprite
             spriteRenderer.color = newColor;
+        }
+    }
+    private void SpawnRandomPickup()
+    {
+        float randomValue = Random.value; // Obtiene un valor aleatorio entre 0 y 1
+
+        if (randomValue < 0.5f)
+        {
+            // 50% de probabilidad de instanciar un medkit
+            Instantiate(salud, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            // 50% de probabilidad de instanciar un ammoPickup
+            Instantiate(ammoPickup, transform.position, Quaternion.identity);
         }
     }
 }
