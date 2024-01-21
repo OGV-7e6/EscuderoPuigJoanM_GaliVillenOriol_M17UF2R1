@@ -145,6 +145,13 @@ public class PlayerMovement : Character
                 StartCoroutine(ResetColorAfterDelay(0.5f));
             }
         }
+        if (other.CompareTag("salud"))
+        {
+            vida = vida + 15;
+            playerRenderer.color = Color.green;
+            isHit = true;
+            StartCoroutine(ResetColorAfterDelay(0.2f));
+        }
 
 
     }
