@@ -4,8 +4,7 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     [SerializeField] GameObject roomPrefab;
-    [SerializeField] private int maxRooms;
-    [SerializeField] private int minRooms;
+    [SerializeField] private int _maxRooms;
 
     int roomWidth = 13;
     int roomHeight = 10;
@@ -29,12 +28,12 @@ public class RoomManager : MonoBehaviour
         roomQueue = new Queue<Vector2Int>();
 
         Vector2Int initialRoomIndex = new Vector2Int(gridSizeX / 2,gridSizeY / 2 );
-        StartRoomGeneration(initialRoomIndex);
+        TryGenerateRoom(initialRoomIndex);
     }
 
     private void Update()
     {
-        if (roomQueue.Count > 0 && roomCount < maxRooms && !generationComplete)
+        if (roomQueue.Count > 0 && roomCount < _maxRooms && !generationComplete)
         {
             Vector2Int roomIndex = roomQueue.Dequeue();
             int gridX = roomIndex.x;
@@ -49,7 +48,7 @@ public class RoomManager : MonoBehaviour
             //Down
             TryGenerateRoom(new Vector2Int(gridX, gridY - 1));
         }
-        else if (roomCount < minRooms)
+        else if (roomCount < _maxRooms)
         {
             Debug.LogWarning("RoomCount is below the minimum. Trying again.");
             RegenerateRooms();
@@ -62,26 +61,13 @@ public class RoomManager : MonoBehaviour
     }
 
 
-    private void StartRoomGeneration(Vector2Int roomIndex)
-    {
-        roomQueue.Enqueue(roomIndex);
-        int x = roomIndex.x;
-        int y = roomIndex.y;
-        roomGrid[x, y] = 1;
-        roomCount++;
-        var initialRoom = Instantiate(roomPrefab, GetPositionFromGridIndex(roomIndex), Quaternion.identity);
-        initialRoom.name = $"Room-{roomCount}";
-        initialRoom.GetComponent<Room>().RoomIndex = roomIndex;
-        roomObjects.Add(initialRoom);
-    }
-
     private bool TryGenerateRoom(Vector2Int roomIndex)
     {
         int x = roomIndex.x;
         int y = roomIndex.y;
 
         //
-        if (roomCount >= maxRooms) return false;
+        if (roomCount >= _maxRooms) return false;
         if (Random.value < 0.5f && roomIndex != Vector2Int.zero) return false;
 
         //evita agolpamiento entre cuartos
@@ -94,6 +80,27 @@ public class RoomManager : MonoBehaviour
         var newRoom = Instantiate(roomPrefab, GetPositionFromGridIndex(roomIndex), Quaternion.identity);
         newRoom.GetComponent<Room>().RoomIndex = roomIndex;
         newRoom.name = $"Room-{roomCount}";
+
+        if (roomCount == 1)
+        {
+            //CUARTO INICIAL
+            newRoom.GetComponent<Room>().RoomType = 0;
+        }
+        else if(roomCount == _maxRooms)
+        {
+            //CUARTO LLAVE
+            newRoom.GetComponent<Room>().RoomType = 6;
+        }
+        else if (roomCount == 6)
+        {
+            //TIENDA
+            newRoom.GetComponent<Room>().RoomType = 5;
+        }
+        else
+        {
+            //CUARTOS CON ENEMIGOS
+            newRoom.GetComponent<Room>().RoomType = Random.Range(1, 5);
+        }
         roomObjects.Add(newRoom);
 
         OpenDoors(newRoom, x, y);
@@ -112,7 +119,7 @@ public class RoomManager : MonoBehaviour
         generationComplete = false;
 
         Vector2Int initialRoomIndex = new Vector2Int(gridSizeX / 2, gridSizeY / 2);
-        StartRoomGeneration(initialRoomIndex);
+        TryGenerateRoom(initialRoomIndex);
     }
 
     void OpenDoors(GameObject room, int x, int y)

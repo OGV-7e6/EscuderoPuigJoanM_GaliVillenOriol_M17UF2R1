@@ -19,6 +19,7 @@ public class Room : MonoBehaviour
     [SerializeField] List<GameObject> roomLayouts;
 
     public Vector2Int RoomIndex { get; set; }
+    public int RoomType { get; set; }
 
     public void OpenDoor(Vector2Int direction)
     {
@@ -49,20 +50,34 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
-        float roomtype = Random.value;
-
-        switch (roomtype)
+        switch (RoomType)
         {
-            case <= .33f:
+            case 0:
                 roomLayouts[0].SetActive(true);
                 break;
 
-            case <= .66f:
+            case 1:
                 roomLayouts[1].SetActive(true);
                 break;
 
-            case <= .99f:
+            case 2:
                 roomLayouts[2].SetActive(true);
+                break;
+
+            case 3:
+                roomLayouts[3].SetActive(true);
+                break;
+
+            case 4:
+                roomLayouts[4].SetActive(true);
+                break;
+
+            case 5:
+                roomLayouts[5].SetActive(true);
+                break;
+
+            case 6:
+                roomLayouts[6].SetActive(true);
                 break;
 
             default:
