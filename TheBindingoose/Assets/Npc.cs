@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement; // Agrega esta directiva
+
 public class Npc : MonoBehaviour
 {
     [SerializeField] private GameObject dialogue;
@@ -12,24 +14,30 @@ public class Npc : MonoBehaviour
     private int index;
     [SerializeField] private GameObject contButton;
     public float wordSpeed;
-    public bool playerIsClose;
-    [SerializeField]  private PlayerInput _playerInput;
-
+    public bool playerIsClose = false;
+    [SerializeField] private PlayerInput _playerInput;
 
     private void OnEnable()
     {
         _playerInput.actions["Interacts"].performed += ctx => Interact(ctx);
         _playerInput.actions["Interacts"].canceled += ctx => Interact(ctx);
-        // Update is called once per frame
     }
-    void Interact(InputAction.CallbackContext ctx)
+
+    void Interact(InputAction.CallbackContext ctx )
     {
-        if (ctx.performed)
+        if (ctx.performed && playerIsClose == true)
         {
             if (dialogue.activeInHierarchy)
             {
-                ZeroText();
-            }else
+                if (ctx.performed)
+                {
+                    dialogueText.text = "";
+
+                    dialogue.SetActive(false);
+                }
+               
+            }
+            else
             {
                 dialogue.SetActive(true);
                 StartCoroutine(Typing());
@@ -40,14 +48,20 @@ public class Npc : MonoBehaviour
         {
             contButton.SetActive(true);
         }
+
+       
     }
 
+    
     public void ZeroText()
     {
         dialogueText.text = "";
         index = 0;
         dialogue.SetActive(false);
+        SceneManager.LoadScene("Shop");
+
     }
+
     public void NextLine()
     {
         if (index < dialog.Length - 1)
@@ -61,6 +75,7 @@ public class Npc : MonoBehaviour
             ZeroText();
         }
     }
+
     IEnumerator Typing()
     {
         foreach (char letter in dialog[index].ToCharArray())
@@ -69,6 +84,7 @@ public class Npc : MonoBehaviour
             yield return new WaitForSeconds(wordSpeed);
         }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -76,13 +92,13 @@ public class Npc : MonoBehaviour
             playerIsClose = true;
         }
     }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             playerIsClose = false;
             ZeroText();
-
         }
     }
 }
