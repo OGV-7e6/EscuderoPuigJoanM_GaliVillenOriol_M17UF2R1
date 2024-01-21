@@ -18,10 +18,10 @@ public class Enemy : MonoBehaviour
         Handles.color = Color.white;
         Handles.DrawWireDisc(transform.position, transform.forward, _attackRange);
     }
-    protected void RotateTowardsTarget()
+    protected float TargetDirection()
     {
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
-        anim.SetFloat("Direction", angle);
+        return angle;
     }
 
     protected bool CheckIfTargetIsOnRange()

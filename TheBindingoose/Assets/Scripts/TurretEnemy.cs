@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class TurretEnemy : Enemy
 {
+    [SerializeField] GameObject fireballPrefab;
     private void Update()
     {
         if (CheckIfTargetIsOnRange())
         {
             anim.SetBool("IsAttacking", true);
-            RotateTowardsTarget();
+            anim.SetFloat("Direction", TargetDirection());
         }
         else
         {
@@ -19,6 +20,8 @@ public class TurretEnemy : Enemy
 
     private void ShootFireBall()
     {
-        Debug.Log("FIRE BALL!!");
+        GameObject fireball = Instantiate(fireballPrefab);
+        fireball.transform.position = transform.position;
+        fireball.transform.rotation = Quaternion.Euler(0, 0, TargetDirection() - 90f);
     }
 }

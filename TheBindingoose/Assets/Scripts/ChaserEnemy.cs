@@ -12,7 +12,7 @@ public class ChaserEnemy : Enemy
         if (CheckIfTargetIsOnRange())
         {
             anim.SetBool("IsMoving", true);
-            RotateTowardsTarget();
+            anim.SetFloat("Direction", TargetDirection());
             MoveTowardsTarget();
         }
         else
@@ -24,5 +24,18 @@ public class ChaserEnemy : Enemy
     private void MoveTowardsTarget()
     {
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            anim.SetBool("Explodes", true);
+        }
     }
 }
