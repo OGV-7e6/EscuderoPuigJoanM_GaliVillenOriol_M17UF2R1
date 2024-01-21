@@ -1,13 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
-
 public class PlayerWeapon : MonoBehaviour
 {
     private SpriteRenderer bulletRenderer;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject shootPrefab;
+    [SerializeField] private GameObject player;
     [SerializeField] private float lastShootDate;
     [SerializeField] private float shootCooldown;
     [SerializeField] private float shootgunCooldown;
@@ -22,6 +23,8 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private float kniveRange;
     [SerializeField] private LayerMask enemys;
     private int dmg = 20;
+
+
 
     private void Start()
     {
@@ -97,8 +100,11 @@ public class PlayerWeapon : MonoBehaviour
 
                 if (arrowKeysPressed)
                 {
+                    if (player.GetComponent<PlayerMovement>().ammo >=1 )
+                    {
+                        Disparar();
+                    }
                     // Si alguna tecla de flecha está siendo presionada
-                    Disparar();
                 }
                 break;
 
@@ -115,8 +121,12 @@ public class PlayerWeapon : MonoBehaviour
 
                 if (arrowKeysPressed)
                 {
+                    if (player.GetComponent<PlayerMovement>().ammo >= 5)
+                    {
+                        DispararLanzallamas();
+
+                    }
                     // Si alguna tecla de flecha está siendo presionada
-                    DispararLanzallamas();
                 }
                 break;
         }
@@ -131,6 +141,10 @@ public class PlayerWeapon : MonoBehaviour
             bullet.transform.position = spawner.position;
             bullet.transform.rotation = spawner.rotation;
             Destroy(bullet, 0.9f);
+            player.GetComponent<PlayerMovement>().ammo= player.GetComponent<PlayerMovement>().ammo - 1;
+            player.GetComponent<PlayerMovement>().UpdateAmmoText();
+
+            Debug.Log("balas " + player.GetComponent<PlayerMovement>().ammo);
             return true;
         }
 
@@ -148,8 +162,13 @@ public class PlayerWeapon : MonoBehaviour
                 lastShootDate = Time.time;
                 bullet.transform.position = fire.position;
                 bullet.transform.rotation = fire.rotation;
+                
                 Destroy(bullet, 0.5f);
             }
+            player.GetComponent<PlayerMovement>().ammo = player.GetComponent<PlayerMovement>().ammo - 5;
+            player.GetComponent<PlayerMovement>().UpdateAmmoText();
+
+            Debug.Log("balas " + player.GetComponent<PlayerMovement>().ammo);
             return true;
 
         }
@@ -189,6 +208,8 @@ public class PlayerWeapon : MonoBehaviour
         // Reinicia la animación al estado de "idle"
         animator.SetBool("Ataque", false);
     }
+    
+
 }
 
 
