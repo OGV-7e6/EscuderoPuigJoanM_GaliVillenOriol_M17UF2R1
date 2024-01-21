@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6537321056408062629}
   - component: {fileID: 1125294399199163566}
   m_Layer: 0
-  m_Name: 2D Pickups v6.2 spritesheet_0
-  m_TagString: Untagged
+  m_Name: salud
+  m_TagString: salud
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

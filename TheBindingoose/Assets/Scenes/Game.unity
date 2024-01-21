@@ -695,6 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92133767cd65b8409da1e33fb84c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  salud: {fileID: 7803943395178236319, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
 --- !u!1 &947648115
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92133767cd65b8409da1e33fb84c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  salud: {fileID: 7803943395178236319, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
 --- !u!1 &999193623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,67 +1429,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6616133644266663875, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
   m_PrefabInstance: {fileID: 45687488}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &7795992351525768452
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6335586918606537320, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 6335586918606537320, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6335586918606537320, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6335586918606537320, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6335586918606537320, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6335586918606537320, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6335586918606537320, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6335586918606537320, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6335586918606537320, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6335586918606537320, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803943395178236319, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
-      propertyPath: m_Name
-      value: 2D Pickups v6.2 spritesheet_0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803943395178236319, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
-      propertyPath: m_TagString
-      value: salud
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

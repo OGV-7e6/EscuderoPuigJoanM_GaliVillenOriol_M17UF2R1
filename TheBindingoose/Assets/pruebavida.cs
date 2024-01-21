@@ -6,6 +6,7 @@ public class pruebavida : Character
 {
     private bool isHit;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject salud;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,8 @@ public class pruebavida : Character
         vida -= damage;
         if (vida <= 0)
         {
+            GameObject medkit = Instantiate(salud);
+            medkit.transform.position = transform.position;
             Destroy(this.gameObject);
         }
         else
