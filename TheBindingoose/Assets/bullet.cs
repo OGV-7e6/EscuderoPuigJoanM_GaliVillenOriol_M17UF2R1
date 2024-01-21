@@ -5,7 +5,7 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     private new Rigidbody2D rb;
-    private float spd = 18;
+    private float spd = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +15,10 @@ public class bullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(gameObject);
+    }
 
     // Update is called once per frame
     void FixedUpdate()

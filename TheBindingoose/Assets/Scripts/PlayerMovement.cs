@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine.VFX;
+using UnityEngine.UI;
 
 public class PlayerMovement : Character
 {
@@ -15,6 +16,9 @@ public class PlayerMovement : Character
     private Animator animatordave;
     protected int animacion;
     protected int armaActual = 0;
+    [SerializeField] private Image life;
+    [SerializeField] private float vidaMax;
+    
 
     void Awake()
     {
@@ -42,7 +46,12 @@ public class PlayerMovement : Character
         animacion = 0;
 
     }
-  
+    void Update()
+    {
+        life.fillAmount = vida / vidaMax;
+    }
+
+
     public void Move(InputAction.CallbackContext ctx)
     {
         float hor = ctx.ReadValue<Vector2>().x;
@@ -91,9 +100,9 @@ public class PlayerMovement : Character
             Debug.Log("Presionaste la tecla E");
             animacion++;
             armaActual = animacion;
-            if (animacion>4)
+            if (animacion > 3)
             {
-                animacion=1;
+                animacion = 1;
             }
             animatordave.SetInteger("Animacion", animacion);
 
@@ -108,7 +117,7 @@ public class PlayerMovement : Character
 
             if (animacion < 1)
             {
-                animacion = 4;
+                animacion = 3;
             }
             animatordave.SetInteger("Animacion", animacion);
 
@@ -117,9 +126,12 @@ public class PlayerMovement : Character
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        vida = vida - 25;
+
+       
         if (other.CompareTag("Enemy") && !isHit)
         {
+            vida = vida - 25;
+
             if (vida <= 0)
             {
                 animator.SetBool("Death", true);
@@ -133,6 +145,8 @@ public class PlayerMovement : Character
                 StartCoroutine(ResetColorAfterDelay(0.5f));
             }
         }
+
+
     }
 
     IEnumerator ResetColorAfterDelay(float delay)
@@ -150,7 +164,7 @@ public class PlayerMovement : Character
         _rb.velocity = _movementInput * _speed;
     }
 
-   
+
 }
 
 

@@ -7,6 +7,7 @@ public class PlayerWeapon : MonoBehaviour
 {
     private SpriteRenderer bulletRenderer;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject shootPrefab;
     [SerializeField] private float lastShootDate;
     [SerializeField] private float shootCooldown;
     [SerializeField] private float shootgunCooldown;
@@ -51,7 +52,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             armaActual++;
             Debug.Log("aaaaaaaa");
-            if (armaActual > 4)
+            if (armaActual > 3)
             {
                 armaActual = 1;
             }
@@ -62,7 +63,7 @@ public class PlayerWeapon : MonoBehaviour
             armaActual--;
             if (armaActual < 1)
             {
-                armaActual = 4;
+                armaActual = 3;
             }
         }
 
@@ -90,7 +91,7 @@ public class PlayerWeapon : MonoBehaviour
                     }
                 }
                 break;
-            case 3:
+            case 2:
                 // Verifica si alguna de las teclas de flecha está siendo presionada
                 foreach (KeyCode tecla in teclasFlecha)
                 {
@@ -108,7 +109,7 @@ public class PlayerWeapon : MonoBehaviour
                 }
                 break;
 
-            case 4:
+            case 3:
                 Debug.Log("entrando");
                 arrowKeysPressed = false;  // Reiniciar el valor a falso
                 foreach (KeyCode tecla in teclasFlecha)
@@ -153,7 +154,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             foreach (Transform fire in Shootgun)
             {
-                GameObject bullet = Instantiate(bulletPrefab);
+                GameObject bullet = Instantiate(shootPrefab);
                 lastShootDate = Time.time;
                 bullet.transform.position = fire.position;
                 bullet.transform.rotation = fire.rotation;
