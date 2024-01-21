@@ -21,6 +21,9 @@ public class PlayerMovement : Character
     [SerializeField] private float vidaMax;
     public int ammo = 5;
     [SerializeField] private TMP_Text municion;
+    [SerializeField] private AudioSource deathSound; // Agregado: Sonido de muerte
+    [SerializeField] private AudioSource healSound; // Agregado: Sonido de curación
+
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -136,7 +139,10 @@ public class PlayerMovement : Character
 
             if (vida <= 0)
             {
+                deathSound.Play();
+
                 animator.SetBool("Death", true);
+
             }
             else
             {
@@ -149,6 +155,7 @@ public class PlayerMovement : Character
         }
         if (other.CompareTag("salud"))
         {
+            healSound.Play();
             vida = vida + 15;
             playerRenderer.color = Color.green;
             isHit = true;

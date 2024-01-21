@@ -22,6 +22,8 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private Transform[] Shootgun;
     [SerializeField] private float kniveRange;
     [SerializeField] private LayerMask enemys;
+    [SerializeField] private AudioSource pistol;
+    [SerializeField] private AudioSource shootgun;
     private int dmg = 20;
 
 
@@ -137,6 +139,7 @@ public class PlayerWeapon : MonoBehaviour
         if (Time.time - lastShootDate > shootCooldown)
         {
             GameObject bullet = Instantiate(bulletPrefab);
+            pistol.Play();
             lastShootDate = Time.time;
             bullet.transform.position = spawner.position;
             bullet.transform.rotation = spawner.rotation;
@@ -159,6 +162,7 @@ public class PlayerWeapon : MonoBehaviour
             foreach (Transform fire in Shootgun)
             {
                 GameObject bullet = Instantiate(shootPrefab);
+                shootgun.Play();
                 lastShootDate = Time.time;
                 bullet.transform.position = fire.position;
                 bullet.transform.rotation = fire.rotation;

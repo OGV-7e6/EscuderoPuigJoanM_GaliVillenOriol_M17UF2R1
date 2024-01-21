@@ -16,6 +16,7 @@ public class Npc : MonoBehaviour
     public float wordSpeed;
     public bool playerIsClose = false;
     [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private AudioSource talk; // Agregado: Sonido de curación
 
     private void OnEnable()
     {
@@ -27,10 +28,14 @@ public class Npc : MonoBehaviour
     {
         if (ctx.performed && playerIsClose == true)
         {
+            talk.Play();
+
             if (dialogue.activeInHierarchy)
             {
                 if (ctx.performed)
                 {
+                    talk.Pause();
+
                     dialogueText.text = "";
 
                     dialogue.SetActive(false);
@@ -55,6 +60,7 @@ public class Npc : MonoBehaviour
     
     public void ZeroText()
     {
+        talk.Pause();
         dialogueText.text = "";
         index = 0;
         dialogue.SetActive(false);
@@ -64,6 +70,7 @@ public class Npc : MonoBehaviour
 
     public void NextLine()
     {
+        talk.Play();
         if (index < dialog.Length - 1)
         {
             index++;
@@ -97,8 +104,12 @@ public class Npc : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            dialogueText.text = "";
+
             playerIsClose = false;
-            ZeroText();
+            dialogue.SetActive(false);
+            talk.Pause();
+
         }
     }
 }
