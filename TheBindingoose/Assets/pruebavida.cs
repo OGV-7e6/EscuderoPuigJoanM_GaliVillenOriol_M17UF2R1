@@ -61,7 +61,7 @@ public class pruebavida : Character
     {
         float randomValue = Random.value; // Obtiene un valor aleatorio entre 0 y 1
 
-        if (randomValue < 0.5f)
+        if (randomValue < 0.4f)
         {
             // 50% de probabilidad de instanciar un medkit
             Instantiate(salud, transform.position, Quaternion.identity);

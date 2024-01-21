@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: ammo
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4326982136248167374, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: life
@@ -265,7 +265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5201419072383084807, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: shootgunCooldown
-      value: 3
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 5201419072383084807, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
       propertyPath: Shootgun.Array.size
@@ -901,7 +901,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 964208290690438749, guid: 75c66ca931ca2cd4593c04d982edea1a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1219,7 +1220,8 @@ PrefabInstance:
       propertyPath: _attackRange
       value: 2.75
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6310282452764545609, guid: 0f0060fa4405d954283a6b0791c3a8bc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
