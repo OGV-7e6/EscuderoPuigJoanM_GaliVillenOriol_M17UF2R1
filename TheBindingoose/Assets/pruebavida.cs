@@ -8,6 +8,7 @@ public class pruebavida : Character
     private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject salud;
     [SerializeField] private GameObject ammoPickup; // Nuevo GameObject para el ammo
+    [SerializeField] private AudioSource death; // Agregado: Sonido de curación
 
     // Start is called before the first frame update
     void Start()
@@ -41,9 +42,10 @@ public class pruebavida : Character
     public void TakeDamage(int damage)
     {
         vida -= damage;
+        death.Play();
+
         if (vida <= 0)
         {
-
             SpawnRandomPickup(); // Llama a la función para decidir qué objeto soltar
             Destroy(this.gameObject);
         }
