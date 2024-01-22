@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement; // Agrega esta directiva
 
 public class Npc : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogue;
+    [SerializeField] private GameObject dialogs;
     [SerializeField] private GameObject shop;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private string[] dialog;
@@ -31,7 +31,7 @@ public class Npc : MonoBehaviour
         {
             talk.Play();
 
-            if (dialogue.activeInHierarchy)
+            if (dialogs.activeInHierarchy)
             {
                 if (ctx.performed)
                 {
@@ -39,13 +39,13 @@ public class Npc : MonoBehaviour
 
                     dialogueText.text = "";
 
-                    dialogue.SetActive(false);
+                    dialogs.SetActive(false);
                 }
 
             }
             else
             {
-                dialogue.SetActive(true);
+                dialogs.SetActive(true);
                 StartCoroutine(Typing());
             }
             Debug.Log("Interaccion");
@@ -64,7 +64,7 @@ public class Npc : MonoBehaviour
         talk.Pause();
         dialogueText.text = "";
         index = 0; ;
-        dialogue.SetActive(false);
+        dialogs.SetActive(false);
         shop.SetActive(true);
     }
 
@@ -107,7 +107,7 @@ public class Npc : MonoBehaviour
             dialogueText.text = "";
 
             playerIsClose = false;
-            dialogue.SetActive(false);
+            dialogs.SetActive(false);
             talk.Pause();
 
         }

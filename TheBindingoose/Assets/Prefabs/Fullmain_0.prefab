@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2580179654477800043}
   - component: {fileID: 4651475334804762946}
   - component: {fileID: 492369027905238645}
+  - component: {fileID: 3035133040936465933}
   m_Layer: 0
   m_Name: Fullmain_0
   m_TagString: Untagged
@@ -202,15 +203,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb18165a3e800c241accf114fcbadf36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 0}
-  shop: {fileID: 0}
-  dialogueText: {fileID: 0}
-  dialog: []
-  contButton: {fileID: 0}
-  wordSpeed: 0
+  dialogs: {fileID: 4627712606159942608, guid: 38cbdc99220940843adbbe77ce607e42, type: 3}
+  shop: {fileID: 1351852270926013576, guid: ad54c9d7c0970e04bbd3819068776f23, type: 3}
+  dialogueText: {fileID: 337629403731486110, guid: 3842e663f58e4f743b2433b5fb0cee93, type: 3}
+  dialog:
+  - Hola!!!!
+  - De verdad... Estoy hablando con un ganso?
+  - "Bueno, es igual, seas o no un ganso, estas en un lugar muy peligroso. \xBFNo
+    crees?"
+  - Te voy a proporcionar una ayuda a cambio de almas. Armaduras y poderes!!
+  - Que me dices eh gansito? (No me puedo creer que haya dicho eso..)
+  contButton: {fileID: 1626394619879781697, guid: 03992f9810b0f2845806bdc47e4f2b53, type: 3}
+  wordSpeed: 0.02
   playerIsClose: 0
-  _playerInput: {fileID: 7559847105406928821, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
-  talk: {fileID: 0}
+  _playerInput: {fileID: 492369027905238645}
+  talk: {fileID: 3035133040936465933}
 --- !u!114 &492369027905238645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,3 +248,99 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!82 &3035133040936465933
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3825306277497079990}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4cc75588fff1fac4cb74091d98ba595b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
