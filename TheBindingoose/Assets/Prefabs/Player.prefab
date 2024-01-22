@@ -120,9 +120,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c8dc79a35a1d845a0888a3da6db8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletRenderer: {fileID: 6468648232160089028}
   bulletPrefab: {fileID: 3317425955650773759, guid: 5852551d9cca6ba4b938949558d964f8, type: 3}
+  shootPrefab: {fileID: 0}
+  lastShootDate: 0
+  shootCooldown: 0
+  shootgunCooldown: 0
+  kniveCooldown: 0
   spawner: {fileID: 5951039541488756535}
+  teclasFlecha: 
+  animator: {fileID: 0}
+  Shootgun: []
+  kniveRange: 0
+  enemys:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3493993919328018039
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +245,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1366325562, guid: 670e8da5c33d65a4ca2aeb11326d775e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -352,6 +363,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 8
   playerRenderer: {fileID: 0}
+  life: {fileID: 0}
+  vidaMax: 0
 --- !u!114 &8899603644724394166
 MonoBehaviour:
   m_ObjectHideFlags: 0
