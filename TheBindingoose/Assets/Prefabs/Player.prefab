@@ -131,10 +131,12 @@ MonoBehaviour:
   teclasFlecha: 
   animator: {fileID: 0}
   Shootgun: []
-  kniveRange: 0.5
+  kniveRange: 1
   enemys:
     serializedVersion: 2
     m_Bits: 0
+  pistol: {fileID: 0}
+  shootgun: {fileID: 0}
 --- !u!1 &3493993919328018039
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +370,8 @@ MonoBehaviour:
   vidaMax: 0
   ammo: 5
   municion: {fileID: 0}
+  deathSound: {fileID: 0}
+  healSound: {fileID: 0}
 --- !u!114 &8899603644724394166
 MonoBehaviour:
   m_ObjectHideFlags: 0
