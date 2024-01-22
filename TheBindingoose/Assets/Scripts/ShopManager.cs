@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ShopManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ShopManager : MonoBehaviour
     public GameObject[] shopPanelsGO; // Cambiado a GameObject
     public ShopTemplate[] shopPanels;
     [SerializeField] private Button[] purchaseButtons;
+    [SerializeField] private GameObject shop;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,10 @@ public class ShopManager : MonoBehaviour
         LoadPanels();
         CheckPurchaseable();
     }
-
+    public void CambiarAEscenaPlay()
+    {
+        shop.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {

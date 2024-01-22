@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine.VFX;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : Character
 {
@@ -142,6 +143,7 @@ public class PlayerMovement : Character
                 deathSound.Play();
 
                 animator.SetBool("Death", true);
+                StartCoroutine(Muerte(1f));
 
             }
             else
@@ -181,6 +183,13 @@ public class PlayerMovement : Character
 
         isHit = false;
     }
+    IEnumerator Muerte(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Restaura el color original
+        CambiarAEscenaMuerte();
+    }
 
     private void FixedUpdate()
     {
@@ -194,6 +203,10 @@ public class PlayerMovement : Character
             // Actualiza el texto con la cantidad actual de munición
             municion.text = "Munición : " + ammo;
         }
+    }
+    public void CambiarAEscenaMuerte()
+    {
+        SceneManager.LoadScene("Death");
     }
 }
 
