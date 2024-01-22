@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    private new Rigidbody2D rb;
+    private Rigidbody2D rb;
     private float spd = 10;
     [SerializeField] private float bulletRange;
     [SerializeField] private LayerMask enemys;
@@ -14,11 +14,6 @@ public class bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-/*
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(gameObject);
-    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

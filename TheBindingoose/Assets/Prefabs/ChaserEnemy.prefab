@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 4057156237760747313}
   - component: {fileID: 2415976857284228305}
   - component: {fileID: 7726025625637323547}
-  m_Layer: 7
   - component: {fileID: 8326592792363080707}
   m_Layer: 7
   m_Name: ChaserEnemy
@@ -184,7 +183,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862644358873372997}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -224,6 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92133767cd65b8409da1e33fb84c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  salud: {fileID: 0}
+  ammoPickup: {fileID: 0}
+  death: {fileID: 0}
 --- !u!82 &8326592792363080707
 AudioSource:
   m_ObjectHideFlags: 0

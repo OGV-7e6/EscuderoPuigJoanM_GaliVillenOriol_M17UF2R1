@@ -203,11 +203,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 0}
+  shop: {fileID: 0}
   dialogueText: {fileID: 0}
   dialog: []
+  contButton: {fileID: 0}
   wordSpeed: 0
   playerIsClose: 0
   _playerInput: {fileID: 7559847105406928821, guid: 4f305c9c1c07692438bec5f00b8da860, type: 3}
+  talk: {fileID: 0}
 --- !u!114 &492369027905238645
 MonoBehaviour:
   m_ObjectHideFlags: 0

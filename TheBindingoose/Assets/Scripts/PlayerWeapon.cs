@@ -1,8 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
 using System.Collections;
-using System.Collections.Generic;
+
 public class PlayerWeapon : MonoBehaviour
 {
     private SpriteRenderer bulletRenderer;
@@ -16,9 +14,9 @@ public class PlayerWeapon : MonoBehaviour
     public Transform spawner;
     protected int armaActual;
     public KeyCode[] teclasFlecha; // Puedes asignar las teclas que desees en el Inspector
-    private float spd = 18; // Agrega esta línea para definir spd
+    //private float spd = 18; // Agrega esta línea para definir spd
     [SerializeField] private Animator animator; // Referencia al componente Animator del personaje
-    private bool ataque = false;  // Nueva variable para controlar el ataque
+    //private bool ataque = false;  // Nueva variable para controlar el ataque
     [SerializeField] private Transform[] Shootgun;
     [SerializeField] private float kniveRange;
     [SerializeField] private LayerMask enemys;

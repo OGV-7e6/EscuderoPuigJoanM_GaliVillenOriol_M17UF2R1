@@ -201,7 +201,7 @@ public class PlayerMovement : Character
         if (municion != null)
         {
             // Actualiza el texto con la cantidad actual de munición
-            municion.text = "Munición : " + ammo;
+            municion.text = $"{ammo}";
         }
     }
     public void CambiarAEscenaMuerte()

@@ -13,11 +13,11 @@ public class Enemy : MonoBehaviour
         target = GameObject.Find("Player").transform;
     }
 
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
         Handles.color = Color.white;
         Handles.DrawWireDisc(transform.position, transform.forward, _attackRange);
-    }
+    }*/
     protected float TargetDirection()
     {
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
