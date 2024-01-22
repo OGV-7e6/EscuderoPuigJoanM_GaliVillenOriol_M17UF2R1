@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5584820902433181588}
   - component: {fileID: 1191832321071663352}
   - component: {fileID: 1659405179956604635}
-  - component: {fileID: 3324105200590346343}
+  - component: {fileID: 7997928776597745215}
   m_Layer: 0
   m_Name: bullet6
   m_TagString: bala
@@ -130,8 +130,8 @@ MonoBehaviour:
   enemys:
     serializedVersion: 2
     m_Bits: 128
---- !u!70 &3324105200590346343
-CapsuleCollider2D:
+--- !u!58 &7997928776597745215
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -162,6 +162,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00033209744, y: 0.048602235}
-  m_Size: {x: 0.09433545, y: 0.30125186}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.02

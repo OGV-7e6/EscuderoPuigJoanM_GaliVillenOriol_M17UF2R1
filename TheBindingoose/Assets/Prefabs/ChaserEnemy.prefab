@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971a0397190a0494cb9dc7f67eb63514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRange: 3.3
+  _attackRange: 5
   speed: 3.3
 --- !u!70 &4057156237760747313
 CapsuleCollider2D:
