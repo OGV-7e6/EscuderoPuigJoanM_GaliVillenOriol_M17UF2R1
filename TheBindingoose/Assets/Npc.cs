@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement; // Agrega esta directiva
 public class Npc : MonoBehaviour
 {
     [SerializeField] private GameObject dialogue;
+    [SerializeField] private GameObject shop;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private string[] dialog;
     private int index;
@@ -24,7 +25,7 @@ public class Npc : MonoBehaviour
         _playerInput.actions["Interacts"].canceled += ctx => Interact(ctx);
     }
 
-    void Interact(InputAction.CallbackContext ctx )
+    void Interact(InputAction.CallbackContext ctx)
     {
         if (ctx.performed && playerIsClose == true)
         {
@@ -40,7 +41,7 @@ public class Npc : MonoBehaviour
 
                     dialogue.SetActive(false);
                 }
-               
+
             }
             else
             {
@@ -54,18 +55,17 @@ public class Npc : MonoBehaviour
             contButton.SetActive(true);
         }
 
-       
+
     }
 
-    
+
     public void ZeroText()
     {
         talk.Pause();
         dialogueText.text = "";
-        index = 0;
+        index = 0; ;
         dialogue.SetActive(false);
-        SceneManager.LoadScene("Shop");
-
+        shop.SetActive(true);
     }
 
     public void NextLine()
