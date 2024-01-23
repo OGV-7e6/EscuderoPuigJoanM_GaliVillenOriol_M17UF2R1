@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
     [SerializeField] GameObject roomPrefab;
     [SerializeField] private int _maxRooms;
+    [SerializeField] private GameObject _loadingCanvas;
 
     int roomWidth = 13;
     int roomHeight = 10;
@@ -57,6 +59,7 @@ public class RoomManager : MonoBehaviour
         {
             Debug.Log($"Generation complete, {roomCount} rooms");
             generationComplete = true;
+            _loadingCanvas.SetActive(false);
         }
     }
 
@@ -74,7 +77,7 @@ public class RoomManager : MonoBehaviour
         if (CountAdjacentRooms(roomIndex) > 1) return false;
 
         roomQueue.Enqueue(roomIndex);
-        roomGrid[x, y] = 1;
+        roomGrid[x, y] += 1;
         roomCount++;
 
         var newRoom = Instantiate(roomPrefab, GetPositionFromGridIndex(roomIndex), Quaternion.identity);
@@ -109,8 +112,9 @@ public class RoomManager : MonoBehaviour
     }
 
     //Clear rooms and generate again
-    private void RegenerateRooms()
+    public void RegenerateRooms()
     {
+        _loadingCanvas.SetActive(true);
         roomObjects.ForEach(Destroy);
         roomObjects.Clear();
         roomGrid = new int[gridSizeX, gridSizeY];
