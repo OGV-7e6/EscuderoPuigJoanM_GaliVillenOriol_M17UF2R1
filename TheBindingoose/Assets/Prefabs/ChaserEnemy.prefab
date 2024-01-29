@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6310282452764545609}
   - component: {fileID: 4057156237760747313}
   - component: {fileID: 2415976857284228305}
-  - component: {fileID: 7726025625637323547}
   - component: {fileID: 8326592792363080707}
   - component: {fileID: 4774113950808569099}
   m_Layer: 7
@@ -140,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   salud: {fileID: 7803943395178236319, guid: 8df8dde23e9eea74a8977921f8f8ea67, type: 3}
+  vidaMax: 0
   ammoPickup: {fileID: 7803943395178236319, guid: 18aafd7bd3c9bcf4dbb43be8d3186358, type: 3}
   death: {fileID: 8326592792363080707}
 --- !u!70 &4057156237760747313
@@ -149,7 +149,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862644358873372997}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -212,21 +212,6 @@ CircleCollider2D:
   m_Offset: {x: -0.03682518, y: 0.1}
   serializedVersion: 2
   m_Radius: 0.26810214
---- !u!114 &7726025625637323547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1862644358873372997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e92133767cd65b8409da1e33fb84c0d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  salud: {fileID: 0}
-  ammoPickup: {fileID: 0}
-  death: {fileID: 0}
 --- !u!82 &8326592792363080707
 AudioSource:
   m_ObjectHideFlags: 0

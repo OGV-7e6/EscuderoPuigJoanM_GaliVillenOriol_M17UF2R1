@@ -130,11 +130,11 @@ public class PlayerMovement : Character
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
 
        
-        if (other.CompareTag("Enemy") && !gameObject.CompareTag("Dave") && !isHit)
+        if (other.gameObject.CompareTag("Enemy") && !gameObject.CompareTag("Dave") && !isHit)
         {
             vida = vida - 25;
 
@@ -155,7 +155,7 @@ public class PlayerMovement : Character
                 StartCoroutine(ResetColorAfterDelay(0.5f));
             }
         }
-        if (other.CompareTag("salud"))
+        if (other.gameObject.CompareTag("salud"))
         {
             healSound.Play();
             vida = vida + 15;
@@ -163,7 +163,7 @@ public class PlayerMovement : Character
             isHit = true;
             StartCoroutine(ResetColorAfterDelay(0.2f));
         }
-        if (other.CompareTag("ammo"))
+        if (other.gameObject.CompareTag("ammo"))
         {
             ammo += 15;
             UpdateAmmoText();
